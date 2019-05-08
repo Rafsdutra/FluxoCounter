@@ -40,15 +40,16 @@ class TimerPageState extends State<TimerPage> {
     final int minuto = (dependencies.stopwatch.elapsed.inMinutes);
 
     final tempo = ('${minuto}:${segundo}');
-    int mediaTempo = 0;
+//    final int media = (segundo % cliente.reduce(max));
+
 
 
     setState(() {
       if (dependencies.stopwatch.isRunning) {
         cliente.add(i++);
-        print("Cliente: ${cliente.reduce(max)}");
-        print("Tempo de espera na fila: ${tempo}");
-//        print("media:  ${minuto}:${segundo%cliente++}")
+        print("Cliente: ${cliente.reduce(max)}\n");
+        print("Tempo de espera na fila: ${tempo}\n");
+//        print("media:  ${media}");
 
       } else {
 
@@ -77,10 +78,12 @@ class TimerPageState extends State<TimerPage> {
 
     final int segundo = (dependencies.stopwatch.elapsed.inSeconds) % 60;
     final int minuto = (dependencies.stopwatch.elapsed.inMinutes);
+    final tempo = ('${minuto}:${segundo}');
+    final int tempoMedio = (segundo % cliente.reduce(max));
 
-
-    print("Total de Clientes: ${cliente.reduce(max)}");
-    print("Tempo total elapsado: ${minuto}:${segundo}");
+    print("Total de Clientes: ${cliente.reduce(max)}\n");
+    print("Tempo total elapsado: ${tempo}\n");
+    print("Tempo médio de espera: ${tempoMedio}\n");
   }
 
   Widget buildFloatingButton(String text, VoidCallback callback) {
